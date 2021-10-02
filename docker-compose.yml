@@ -1,14 +1,24 @@
 version: '3'
 
 services: 
-  api-dev: 
+  app: 
     build: 
       context: .
       dockerfile: Dockerfile
     ports: 
       - "3000:3000"  #declaring ports to use in the docker container and your application
+    links:
+      - mongodb
     volumes:
       - "./:/node_docker" #declaring volume in which the application would run inside the docker container
+    container_name: app
     command: npm run dev   #command that triggers the application to run
+  mongodb:
+    image: mongo:4.4.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/mongo:/data/db
+    container_name: node_docker_db
     
 

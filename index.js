@@ -1,10 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
-const port = process.env.PORT
+const port = process.env.PORT;
+const dbConn = require("./config/dbconn");
 
 app.get("/", (req, res) => {
-    res.send("Welcome to my Node_Docker application...I am just Making a simple test on dockerizing node.js application")
+    res.send("Welcome to my awesome Node_Docker application...I am just Making a simple test on dockerizing node.js application")
 })
 
 app.listen(port, (err, connected) => {
